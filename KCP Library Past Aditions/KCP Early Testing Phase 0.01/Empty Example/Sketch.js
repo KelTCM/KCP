@@ -1,0 +1,5 @@
+let canvas1 = fetchCanvas("canvas1", "2d")
+setSize(canvas1, 400, 400)
+background(canvas1, 0, 0, 0)
+fill(canvas1, 255, 255, 255)
+rect(canvas1, 100, 100, 200, 200)
