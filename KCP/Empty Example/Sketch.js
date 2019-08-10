@@ -38,6 +38,11 @@ function draw() {
     y += r*2 * sin(n * angle);
     canvas.line(prevx, prevy, x + 200, y + 200)
     // wave.unshift(y)
+    canvas.beginShape(100, 100)
+    // canvas.vertex(100, 100)
+    canvas.canvas.moveTo(100, 100)
+    canvas.vertex(100, 200)
+    canvas.endShape(CLOSE)
     // canvas.translate(150, 200)
     canvas.fill(255, 255, 255)
     canvas.translate(200, 200)

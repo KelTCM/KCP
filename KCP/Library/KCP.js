@@ -9,6 +9,7 @@ const PI = 3.1415926565
 const HALF_PI = PI/2
 const QUARTER_PI = PI/4
 const TWO_PI = PI*2
+const CLOSE = "close"
 
 function getCanvas(id = "", render = "2D", width = 400, height = 400) {
     let renderName = "2d";
@@ -77,6 +78,10 @@ function day() {
 
 class Canvas {
     constructor(canvasId, render = "2d", w, h) {
+        this.insideBeginShape = false;
+        this.bx = 0;
+        this.by = 0;
+        this.bz = 0
         this.canvas = document.getElementById(canvasId).getContext(render);
         this.canvas.canvas.width = w;
         this.canvas.canvas.height = h;
@@ -84,9 +89,10 @@ class Canvas {
         this.width = w;
         this.height = h;
         this.color = [255, 255, 255, 255];
-        this.fill(255, 255, 255)
-        this.stroke(0, 0, 0)
-        this.translation = createVector(0, 0)
+        this.fill(255, 255, 255);
+        this.stroke(0, 0, 0);
+        this.translation = createVector(0, 0);
+        this.totalVertexesOfLatestShape;
     };
 
     rect(x, y, w, h) {
@@ -170,15 +176,36 @@ class Canvas {
         this.canvas.moveTo(x, y)
         this.canvas.lineTo(x2, y2)
         this.canvas.stroke()
-        this.canvas.closePath()
+        this.canvas.closePath();
     }
 
     point(x, y, size) {
-        this.circle(x, y, size)
+        this.circle(x, y, size);
     }
 
     translate(x, y) {
-        this.translation = createVector(x, y)
+        this.translation = createVector(x, y);
+    }
+
+    beginShape(x, y, z = 0) {
+        this.canvas.beginPath();
+        this.canvas.moveTo(x, y, z);
+        this.totalVertexesOfLatestShape = 0;
+        this.insideBeginShape = true;
+    }
+
+    vertex(x, y, z = 0) {
+            this.canvas.lineTo(x, y, z);
+    }
+
+    endShape(toDo) {
+        if(toDo === CLOSE) {
+            this.canvas.lineTo(this.bx, this.by, this.bz)
+        }
+        this.insideBeginShape = false;
+        this.canvas.stroke();
+        this.canvas.fill();
+        this.canvas.closePath();
     }
 };
 

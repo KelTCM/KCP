@@ -3,15 +3,41 @@ THERE ARE GOING TO BE MANY BUGS AND MANY THINGS
 MISSING FROM THE LATER EDITIONS OF KCP (0.05 Or 
 Later)!!!
 
-The Time Update
+The Customization Update
 
 Change Log:
-    New Function For Getting the hour called hour()
-    New Function For Getting the minute called minute()
-    New Function For Getting the second called second()
-    This Goes on for a while with stuff like day(), month(), and year()
-    If you put UTC on the front of any of them, you will get that unit of time in UTC
+    New Function avilable for begining custom shapes called canvasName.beginShape(x, y, ?z)
+    New Function avilable for adding points to custom shapes called canvasName.vertex(x, y, ?z) 
+    New Function avilable for finishing custom shapes called canvasName.endShape(?CLOSE)
+
+    with all of these changes, you can make somthing like this
+
+        /\
+       /  \
+      /    \
+     /      \
+    /________\
+
+    or
+
+    /^^^\
+    \   /
+     \__\
+
+     or
+
+     _____________________
+    |                     |
+    |                     |
+    |      O       O      |
+    |                     |
+    |          J          |
+    |                     |
+    |      |_______|      |
+    |      |       |      |
+    |      ^|____|^       |
+    |_____________________|
 Bug Fixes:
-    No Bug Fixes In 0.04
+    
 
 8/9/2019
