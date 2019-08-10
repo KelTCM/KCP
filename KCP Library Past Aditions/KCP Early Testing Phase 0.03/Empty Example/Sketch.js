@@ -4,12 +4,14 @@ let angle = 0
 let doc = 5
 let roc = doc/2
 let wave = []
-let slider = {value: 2}
+let slider = {value: 1}
 let frameCount = 0
 let h1 = document.getElementById("h1ele")
-let button = document.getElementById("rb")
 
-button.addEventListener("click", click)
+
+document.getElementById("rb").addEventListener("click", click)
+
+let slider = document.getElementById("slider")
 
 function click() {
     wave = []
@@ -20,7 +22,7 @@ function change() {
 }
 
 function draw() {
-    h1.innerText = UTChour()
+    h1.innerText = "There Are " + slider.value + " Circles"
     canvas.translate(0, 0)
     canvas.background(0, 0, 0, 255);
     canvas.noFill();
@@ -57,7 +59,7 @@ function draw() {
     if(wave.length > 200) {
         wave.pop()
     }
-    angle+=0.05
+    angle+=0.1
     frameCount++
     canvas.canvas.stroke()
     slider = {value: UTChour()}

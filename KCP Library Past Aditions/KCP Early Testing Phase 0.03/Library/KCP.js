@@ -27,54 +27,6 @@ function cos(x) {
     return Math.cos(x);
 }
 
-function UTCyear() {
-    return new Date().getUTCFullYear()
-}
-
-function UTCmonth() {
-    return new Date().getUTCMonth()
-}
-
-function UTCsecond() {
-    return new Date().getUTCSeconds()
-}
-
-function UTCminute() {
-    return new Date().getUTCMinutes()
-}
-
-function UTChour() {
-    return new Date().getUTCHours()
-}
-
-function UTCday() {
-    return new Date().getUTCDay()
-}
-
-function year() {
-    return new Date().getFullYear()
-}
-
-function month() {
-    return new Date().getMonth()
-}
-
-function second() {
-    return new Date().getSeconds()
-}
-
-function minute() {
-    return new Date().getMinutes()
-}
-
-function hour() {
-    return new Date().getHours()
-}
-
-function day() {
-    return new Date().getDay()
-}
-
 class Canvas {
     constructor(canvasId, render = "2d", w, h) {
         this.canvas = document.getElementById(canvasId).getContext(render);

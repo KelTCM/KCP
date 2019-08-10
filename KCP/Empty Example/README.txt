@@ -1,13 +1,17 @@
 WARNING!!! EARLY PHASE OF KCP BEFORE ALPHA BEGAN
 THERE ARE GOING TO BE MANY BUGS AND MANY THINGS
-MISSING FROM THE LATER EDITIONS OF KCP (0.04 Or 
+MISSING FROM THE LATER EDITIONS OF KCP (0.05 Or 
 Later)!!!
 
-Shapes Update #1
+The Time Update
 
 Change Log:
-    New Function for making Ellipses
-    Extention From canvasName.ellipse(x, y, w, h) for making circles called canvasName.circle(x, y, r)
-    canvasName.translate(x, y) is now avalible to use for shifting 0, 0
+    New Function For Getting the hour called hour()
+    New Function For Getting the minute called minute()
+    New Function For Getting the second called second()
+    This Goes on for a while with stuff like day(), month(), and year()
+    If you put UTC on the front of any of them, you will get that unit of time in UTC
 Bug Fixes:
-    Bug With strokes found and Fixed
+    No Bug Fixes In 0.04
+
+8/9/2019
