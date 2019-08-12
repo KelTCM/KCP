@@ -155,10 +155,10 @@ class Canvas {
         let angle = 0;
         x += this.translation.x
         y += this.translation.y
-        this.canvas.moveTo(x+w, y)
+        this.canvas.moveTo(x+(w/2), y)
         for(let i = 0; i < w * h; i++) {
-            let xpos = w * cos(angle) + x;
-            let ypos = h * sin(angle) + y;
+            let xpos = w/2 * cos(angle) + x;
+            let ypos = h/2 * sin(angle) + y;
             this.canvas.lineTo(xpos, ypos);
             angle+=0.1;
         };
