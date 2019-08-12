@@ -2,32 +2,35 @@ let canvas = getCanvas("canvas1", "2d", 600, 400);
 let r = 50 * (4 / PI)
 let angle = 0
 let doc = 5
-let roc = doc/2
-let wave = []
-let slider = {value: 2}
-let frameCount = 0
-let h1 = document.getElementById("h1ele")
-let button = document.getElementById("rb")
+let roc = doc/2;
+let wave = [];
+let slider = {value: 2};
+let frameCount = 0;
+let h1 = document.getElementById("h1ele");
+let button = document.getElementById("rb");
 
-button.addEventListener("click", click)
+button.addEventListener("click", click);
 
 function click() {
-    wave = []
+    wave = [];
 }
 
 function change() {
-    h1.innerText = slider.value
+    h1.innerText = UTChour();
 }
 
 function draw() {
-    h1.innerText = UTChour()
-    canvas.translate(0, 0)
+    h1.innerText = hour(true);
+    canvas.translate(0, 0);
     canvas.background(0, 0, 0, 255);
+    // canvas.beginShape(100, 100);
+    // canvas.vertex(100, 200);
+    // canvas.endShape();
     canvas.noFill();
     let x = 0;
     let y = 0;
     canvas.stroke(255, 255, 255);
-    for(let i = 0; i < slider.value; i++) {
+    for(let i = 0; i < hour(true); i++) {
         canvas.translate(0, 0)
         prevx = x + 200
         prevy = y + 200
@@ -60,7 +63,6 @@ function draw() {
     angle+=0.05
     frameCount++
     canvas.canvas.stroke()
-    slider = {value: UTChour()}
     window.requestAnimationFrame(draw);
 }
 window.requestAnimationFrame(draw);

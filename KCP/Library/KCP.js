@@ -27,53 +27,52 @@ function sin(x) {
 function cos(x) {
     return Math.cos(x);
 }
-
-function UTCyear() {
-    return new Date().getUTCFullYear()
-}
-
-function UTCmonth() {
-    return new Date().getUTCMonth()
-}
-
-function UTCsecond() {
-    return new Date().getUTCSeconds()
-}
-
-function UTCminute() {
-    return new Date().getUTCMinutes()
-}
-
-function UTChour() {
-    return new Date().getUTCHours()
-}
-
-function UTCday() {
-    return new Date().getUTCDay()
-}
-
-function year() {
+function year(UTC = false) {
+    if(!UTC) {
     return new Date().getFullYear()
+    }else{
+        return new Date().getUTCFullYear()
+    }
 }
 
-function month() {
-    return new Date().getMonth()
+function month(UTC = false) {
+    if(!UTC) {
+        return new Date().getMonth()
+    }else{
+        return new Date().getUTCMonth()
+    }
 }
 
-function second() {
-    return new Date().getSeconds()
+function second(UTC = false) {
+    if(UTC) {
+        return new Date().getUTCSeconds()
+    }else{
+        return new Date().getSeconds()
+    }
 }
 
-function minute() {
-    return new Date().getMinutes()
+function minute(UTC = false) {
+    if(UTC) {
+        return new Date().getUTCMinutes()
+    }else{
+        return new Date().getMinutes()
+    }
 }
 
-function hour() {
-    return new Date().getHours()
+function hour(UTC = false) {
+    if(UTC) {
+        return new Date().getUTCHours()
+    }else{
+        return new Date().getHours()
+    }
 }
 
-function day() {
-    return new Date().getDay()
+function day(UTC = false) {
+    if(UTC) {
+        return new Date().getUTCDay()
+    }else{
+        return new Date().getDay()
+    }
 }
 
 class Canvas {
@@ -82,6 +81,7 @@ class Canvas {
         this.bx = 0;
         this.by = 0;
         this.bz = 0
+        this.render = render;
         this.canvas = document.getElementById(canvasId).getContext(render);
         this.canvas.canvas.width = w;
         this.canvas.canvas.height = h;
@@ -189,13 +189,21 @@ class Canvas {
 
     beginShape(x, y, z = 0) {
         this.canvas.beginPath();
-        this.canvas.moveTo(x, y, z);
+        if(this.render === "webgl") {
+            this.canvas.moveTo(x, y, z);
+        }else{
+            this.canvas.moveTo(x, y);
+        }
         this.totalVertexesOfLatestShape = 0;
         this.insideBeginShape = true;
     }
 
     vertex(x, y, z = 0) {
+        if(this.render === "2d") {
+            this.canvas.lineTo(x, y);
+        }else{
             this.canvas.lineTo(x, y, z);
+        }
     }
 
     endShape(toDo) {

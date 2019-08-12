@@ -6,38 +6,14 @@ Later)!!!
 The Customization Update
 
 Change Log:
-    New Function avilable for begining custom shapes called canvasName.beginShape(x, y, ?z)
-    New Function avilable for adding points to custom shapes called canvasName.vertex(x, y, ?z) 
-    New Function avilable for finishing custom shapes called canvasName.endShape(?CLOSE)
-
-    with all of these changes, you can make somthing like this
-
-        /\
-       /  \
-      /    \
-     /      \
-    /________\
-
-    or
-
-    /^^^\
-    \   /
-     \__\
-
-     or
-
-     _____________________
-    |                     |
-    |                     |
-    |      O       O      |
-    |                     |
-    |          J          |
-    |                     |
-    |      |_______|      |
-    |      |       |      |
-    |      ^|____|^       |
-    |_____________________|
+    All UTC Functions are Gone And Replaced With An Argument, for an exaple, let UTCYear = year((UTC is the Argument, 
+    it's boolean, so if your getting the UTC Year, you will need to put as true)
+    true)
+    so say it's 10pm UTC, heres an example of what it will show
+    console.log(UTCYear)
+    it will then return 22
+    22
 Bug Fixes:
-    
+    Customization for shapes now works Properly!
 
-8/9/2019
+8/11/2019
