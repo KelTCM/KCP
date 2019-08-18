@@ -5,13 +5,23 @@
 // Thank You
 // Version 0.03/Early Testing Phase 3
 
-const PI = 3.1415926565
+const PI = Math.PI
 const HALF_PI = PI/2
 const QUARTER_PI = PI/4
 const TWO_PI = PI*2
 const CLOSE = "close"
 
 function getCanvas(id = "", render = "2D", width = 400, height = 400) {
+    if(draw) {
+        function runDraw() {
+            draw()
+            window.requestAnimationFrame(runDraw)
+        }
+        window.requestAnimationFrame(runDraw)
+    }
+    // if(!setup) {
+    //     setup();
+    // }
     let renderName = "2d";
     if(render == "3d") {
         renderName = "webgl";
@@ -20,13 +30,6 @@ function getCanvas(id = "", render = "2D", width = 400, height = 400) {
     return canvas;
 }
 
-function sin(x) {
-    return Math.sin(x);
-}
-
-function cos(x) {
-    return Math.cos(x);
-}
 function year(UTC = false) {
     if(!UTC) {
     return new Date().getFullYear()
@@ -150,6 +153,11 @@ class Canvas {
         this.ellipse(x, y, r*2)
     }
 
+    map(valToMap, rlmi, rlma, rhmi, rhma) {
+        let mappedVal = valToMap - ((rlmi - valToMap)*(rhmi - rhma)/(rlmi - rlma));
+        return mappedVal
+    }
+
     ellipse(x, y, w, h = w) {
         this.canvas.beginPath();
         let angle = 0;
@@ -160,7 +168,7 @@ class Canvas {
             let xpos = w/2 * cos(angle) + x;
             let ypos = h/2 * sin(angle) + y;
             this.canvas.lineTo(xpos, ypos);
-            angle+=0.1;
+            angle+=0.05;
         };
         this.canvas.fill()
         this.canvas.stroke()
