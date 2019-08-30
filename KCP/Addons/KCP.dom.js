@@ -1,3 +1,5 @@
+const WEBGL
+
 function createSlider(min, max, value) {
     let slider = document.createElement("input");
     slider.type = "range";
@@ -20,12 +22,14 @@ function createTextArea() {
     return textarea
 }
 
-function createCanvas(w, h) {
-    let canvas = document.createElement("canvas");
-    canvas.width = w;
-    canvas.height = h;
-    canvas.id = Math.random() + ""
-
+function createCanvas(w, h, render = "2d") {
+    let rrender = "2d"
+    if(render = WEBGL) {
+        rrender = "webgl"
+    }
+    let crcanvas = document.createElement("canvas");
+    crcanvas.id = Math.random() + ""
+    let canvas = new Canvas(crcanvas.id, rrender, w, h);
     document.body.appendChild(canvas);
     return canvas;
 }

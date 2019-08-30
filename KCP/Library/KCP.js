@@ -153,11 +153,6 @@ class Canvas {
         this.ellipse(x, y, r*2)
     }
 
-    map(valToMap, rlmi, rlma, rhmi, rhma) {
-        let mappedVal = valToMap - ((rlmi - valToMap)*(rhmi - rhma)/(rlmi - rlma));
-        return mappedVal
-    }
-
     ellipse(x, y, w, h = w) {
         this.canvas.beginPath();
         let angle = 0;
@@ -173,6 +168,19 @@ class Canvas {
         this.canvas.fill()
         this.canvas.stroke()
         this.canvas.closePath();
+    }
+
+    arc(x, y, w, h, sa, ea) {
+        this.canvas.beginPath();
+        this.canvas.moveTo(w/2 * cos(sa), h/2 * sin(sa))
+        for(let angle = sa; angle < ea+0.01; angle+=0.01) {
+            let x = w/2 * cos(angle);
+            let y = h/2 * sin(angle);
+            this.canvas.lineTo(x, y)
+        }
+        this.canvas.fill();
+        this.canvas.stroke();
+        this.closePath();
     }
 
     line(x, y, x2, y2) {
